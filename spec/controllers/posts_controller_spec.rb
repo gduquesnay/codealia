@@ -51,6 +51,7 @@ describe PostsController do
     end
 
     it 'assigns a new post to @post' do
+      pending "not yet implemented"
       Post.should_receive(:new).and_return('I like coffee')
       get :new, {}
       assigns(:post).should eq post
