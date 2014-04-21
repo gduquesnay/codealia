@@ -38,7 +38,6 @@ describe PostsController do
     end
   end
 
-
   describe 'GET new' do
     it 'does call the authenticate method' do
       controller.should_receive(:authenticate)
@@ -51,10 +50,14 @@ describe PostsController do
     end
 
     it 'assigns a new post to @post' do
-      pending "not yet implemented"
-      Post.should_receive(:new).and_return('I like coffee')
+      controller.should_receive(:authenticate).and_return true
       get :new, {}
-      assigns(:post).should eq post
+      assigns(:post).should be_a_new(Post)
+    end
+
+    it 'does not assign a new post if user is not authenticated' do
+      get :new, {}
+      assigns(:post).should be_nil
     end
   end
 end
