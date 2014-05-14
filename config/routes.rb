@@ -6,8 +6,6 @@ Codealia::Application.routes.draw do
     end
   end
 
-  get '/templates/*template_name', to: 'templates#get_template'
-
   root 'static_pages#index'
   get '/about', to: 'static_pages#about', as: 'about'
   get '/donors', to: 'static_pages#donors', as: 'donors'
@@ -21,4 +19,5 @@ Codealia::Application.routes.draw do
   get '/html-preview', to: 'static_pages#html_preview', as: 'html_preview'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
+  get '/code-playground', to: 'static_pages#code_playground', as: 'code_playground'
 end
